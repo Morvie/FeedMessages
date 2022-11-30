@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMessages.API", "FeedMessages.API\FeedMessages.API.csproj", "{369C004D-5892-4C1F-A7ED-F41B3B8F08BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMessages.API", "FeedMessages.API\FeedMessages.API.csproj", "{369C004D-5892-4C1F-A7ED-F41B3B8F08BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMessages.Application", "FeedMessages.Application\FeedMessages.Application.csproj", "{C75FA53D-D4AB-4C31-97F3-CB33411CEB48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMessages.Application", "FeedMessages.Application\FeedMessages.Application.csproj", "{C75FA53D-D4AB-4C31-97F3-CB33411CEB48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMessages.Domain", "FeedMessages.Domain\FeedMessages.Domain.csproj", "{F5534C50-6770-4387-848E-89498E4EB099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMessages.Domain", "FeedMessages.Domain\FeedMessages.Domain.csproj", "{F5534C50-6770-4387-848E-89498E4EB099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMessages.Infrastructure", "FeedMessages.Infrastructure\FeedMessages.Infrastructure.csproj", "{953EB27C-40FB-4904-9EE0-D1FCB23265E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMessages.Infrastructure", "FeedMessages.Infrastructure\FeedMessages.Infrastructure.csproj", "{953EB27C-40FB-4904-9EE0-D1FCB23265E7}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0E46327B-D8D8-42BA-B7C7-3EB04D207DBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMessages.Test", "FeedMessages.Test\FeedMessages.Test.csproj", "{4249479A-5988-4676-81EE-C629A18503CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0E46327B-D8D8-42BA-B7C7-3EB04D207DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E46327B-D8D8-42BA-B7C7-3EB04D207DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E46327B-D8D8-42BA-B7C7-3EB04D207DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4249479A-5988-4676-81EE-C629A18503CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4249479A-5988-4676-81EE-C629A18503CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4249479A-5988-4676-81EE-C629A18503CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4249479A-5988-4676-81EE-C629A18503CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

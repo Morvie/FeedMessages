@@ -2,6 +2,7 @@
 using FeedMessages.Application.Commands.CreateFeed;
 using FeedMessages.Application.Commands.DeleteFeed;
 using FeedMessages.Application.Commands.UpdateFeed;
+using FeedMessages.Application.Notifications;
 using FeedMessages.Application.Queries.GetAllFeeds;
 using FeedMessages.Application.Queries.GetFeed;
 using FeedMessages.Domain.Entities;
@@ -53,7 +54,19 @@ namespace FeedMessages.API.Controllers
         {
             var query = new CreateFeedCommand(createModel.Author, createModel.TopicName, createModel.Content);
             var result = await _mediator.Send(query);
+
             if (result == null) return BadRequest();
+
+            await _mediator.Publish(new FeedCreateNotification()
+            {
+                Id = result.Id,
+                ForumId = Guid.Empty,
+                TopicName = result.TopicName,
+                Content = result.Content,
+                Author = result.Author,
+                CreatedAt = result.CreatedAt,
+                LastEdited = result.LastEdited
+            });
 
             return Ok(result);
         }
