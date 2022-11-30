@@ -49,6 +49,19 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
+// Configure RabbitMQ options
+builder.Services.AddOptions<MassTransitHostOptions>().Configure(options =>
+{
+    // Waits until bus is started:
+    options.WaitUntilStarted = true;
+
+    // Limit wait time when starting the bus:
+    options.StartTimeout = TimeSpan.FromSeconds(10);
+
+    // Limit wait time when stopping the bus:
+    options.StopTimeout = TimeSpan.FromSeconds(30);
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
