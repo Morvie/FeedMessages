@@ -5,6 +5,7 @@ using FeedMessages.Application.Interfaces.Infrastructure;
 using FeedMessages.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using FeedMessages.Infrastructure.Context;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,21 @@ builder.Services.AddScoped<ICommandFeedInfrastructure, CommandFeedRepository>();
 ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddDbContext<FeedDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
     b => b.MigrationsAssembly("FeedMessages.API").EnableRetryOnFailure()));
+
+// Add RabbitMQ connection:
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration.GetValue<string>("RabbitMQ:Hosting:URL"), "/", h =>
+        {
+            h.Username(builder.Configuration.GetValue<string>("RabbitMQ:User_Credentials:Username"));
+            h.Password(builder.Configuration.GetValue<string>("RabbitMQ:User_Credentials:Password"));
+        });
+
+        cfg.ConfigureEndpoints(context);
+    });
+});
 
 var app = builder.Build();
 
