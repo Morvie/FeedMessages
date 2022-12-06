@@ -52,7 +52,7 @@ namespace FeedMessages.API.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(CreateFeedViewModel createModel)
         {
-            var query = new CreateFeedCommand(createModel.Author, createModel.TopicName, createModel.Content);
+            var query = new CreateFeedCommand(createModel.ForumId, createModel.Author, createModel.TopicName, createModel.Content);
             var result = await _mediator.Send(query);
 
             if (result == null) return BadRequest();
@@ -60,12 +60,7 @@ namespace FeedMessages.API.Controllers
             await _mediator.Publish(new FeedCreateNotification()
             {
                 Id = result.Id,
-                ForumId = Guid.Empty,
-                TopicName = result.TopicName,
-                Content = result.Content,
-                Author = result.Author,
-                CreatedAt = result.CreatedAt,
-                LastEdited = result.LastEdited
+                ForumId = result.ForumId,
             });
 
             return Ok(result);

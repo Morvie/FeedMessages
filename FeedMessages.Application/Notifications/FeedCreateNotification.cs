@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace FeedMessages.Application.Notifications
 {
-    public class FeedCreateNotification : INotification
-    {        
+    public record FeedCreateNotification : INotification
+    {   
+        //Init since the data become immutable.
         public Guid Id { get; init; }
         public Guid ForumId { get; init; }
-        public string TopicName { get; init; } = "Default Topic";
-        public string Content { get; init; } = "Default Content";
-        public string Author { get; init; } = "Default Author";
-        public DateTime CreatedAt { get; init; }
-        public DateTime LastEdited { get; init; }
+
     }
 }
 

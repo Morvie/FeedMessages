@@ -19,16 +19,12 @@ namespace FeedMessages.Application.Notifications
 
         public async Task Handle(FeedCreateNotification notification, CancellationToken cancellationToken)
         {
-            var endpoint = await _publisher.GetSendEndpoint(new Uri("queue:feed-created---queue"));
+            var endpoint = await _publisher.GetSendEndpoint(new Uri("queue:feed_service"));
             await endpoint.Send(new FeedCreateNotification()
             {
                 Id = notification.Id,
                 ForumId = notification.ForumId,
-                TopicName = notification.TopicName,
-                Content = notification.Content,
-                Author = notification.Author,
-                CreatedAt = notification.CreatedAt,
-                LastEdited = notification.LastEdited
+
             }, context =>
             {
                 context.CorrelationId = notification.ForumId;

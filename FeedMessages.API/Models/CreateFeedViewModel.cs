@@ -2,12 +2,14 @@
 {
     public class CreateFeedViewModel
     {
+        public Guid ForumId { get; set; }
         public string TopicName { get; set; } = "Default Topic";
         public string Content { get; set; } = "Default Content";
         public string Author { get; set; } = "Default Author";
 
-        public CreateFeedViewModel(string topicName, string content, string author)
+        public CreateFeedViewModel(Guid forumid,string topicName, string content, string author)
         {
+            ForumId = forumid;
             TopicName = topicName;
             Content = content;
             Author = author;

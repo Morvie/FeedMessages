@@ -10,12 +10,14 @@ namespace FeedMessages.Application.Commands.CreateFeed
 {
     public class CreateFeedCommand : IRequest<FeedDto>
     {
+        public Guid ForumId { get; set; }
         public string Author { get; } = "Default Author";
         public string TopicName { get; } = "Default Topic";
         public string Content { get; } = "Default Description";
 
-        public CreateFeedCommand(string author, string topicName, string content)
+        public CreateFeedCommand(Guid forumid,string author, string topicName, string content)
         {
+            ForumId = forumid;
             Author = author;
             TopicName = topicName;
             Content = content;
