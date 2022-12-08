@@ -98,4 +98,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/feedv2:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/feeds:latest
