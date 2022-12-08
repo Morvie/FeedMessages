@@ -96,6 +96,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./FeedMessages.API/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/feeds:latest
