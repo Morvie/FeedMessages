@@ -27,17 +27,6 @@ spec:
             limits:
               cpu: 200m
               memory: 200Mi
-          env:
-          - name: "ASPNETCORE_ENVIRONMENT"
-            value: "Kubernetes"
-          volumeMounts:
-          - name: settings
-            mountPath: /app/settings
-            readOnly: true
-      volumes:
-      - name: settings
-        secret:
-          secretName: feed-docker-appsettings
 ---
 # Service for the API:
 apiVersion: v1
