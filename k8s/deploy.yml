@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: feeds-api
-          image: markgoertz/feeds:latest
-          imagePullPolicy: IfNotPresent
+          image: markgoertz/feedmessages:latest
+          imagePullPolicy: Always
           ports:
           - containerPort: 80
           resources:

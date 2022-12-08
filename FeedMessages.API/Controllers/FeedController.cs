@@ -60,7 +60,7 @@ namespace FeedMessages.API.Controllers
             await _mediator.Publish(new FeedCreateNotification()
             {
                 Id = result.Id,
-                ForumId = result.ForumId,
+                ForumId = Guid.Empty
             });
 
             return Ok(result);
