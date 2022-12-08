@@ -23,7 +23,7 @@ builder.Services.AddMediatR(new Type[]
     typeof(QueriesMediatR.GetFeed.GetFeedQuery),
     typeof(CommandsMediatR.CreateFeed.CreateFeedCommand),
     typeof(CommandsMediatR.UpdateFeed.UpdateFeedCommand),
-    typeof(CommandsMediatR.DeleteFeed.DeleteFeedCommand)
+    typeof(CommandsMediatR.DeleteFeed.DeleteFeedCommand),
 });
 
 // Dependency injection:
