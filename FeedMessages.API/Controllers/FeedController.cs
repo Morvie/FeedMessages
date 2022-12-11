@@ -47,7 +47,7 @@ namespace FeedMessages.API.Controllers
 
             foreach (var thread in result)
             {
-                if(id.Equals(thread.Id)) feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited, thread.MovieId));
+                if(id.Equals(thread.MovieId)) feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited, thread.MovieId));
                 
                 if (!feeds.Any()) return NoContent();            
             }
