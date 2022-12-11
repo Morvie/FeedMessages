@@ -6,6 +6,7 @@
         public string TopicName { get; set; } = "Default Topic";
         public string Content { get; set; } = "Default Content";
         public string Author { get; set; } = "Default Author";
+        public int MovieId { get; set; }
 
         public CreateFeedViewModel(Guid forumid,string topicName, string content, string author)
         {
@@ -17,6 +18,7 @@
 
         public CreateFeedViewModel()
         {
+
         }
     }
 }

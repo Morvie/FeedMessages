@@ -14,8 +14,9 @@ namespace FeedMessages.Domain.Entities
         public string Author { get; set; } = "Default Author";
         public DateTime CreatedAt { get; set; } 
         public DateTime LastEdited { get; set; }
+        public int MovieId { get; set; }
 
-        public FeedDto(Guid id, string topicName, string content, string author, DateTime createdAt, DateTime lastEdited)
+        public FeedDto(Guid id, string topicName, string content, string author, DateTime createdAt, DateTime lastEdited, int movieId)
         {
             Id = id;
             TopicName = topicName;
@@ -23,6 +24,7 @@ namespace FeedMessages.Domain.Entities
             Author = author;
             CreatedAt = createdAt;
             LastEdited = lastEdited;
+            MovieId = movieId;
         }
 
         public FeedDto()

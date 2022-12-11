@@ -14,13 +14,15 @@ namespace FeedMessages.Application.Commands.CreateFeed
         public string Author { get; } = "Default Author";
         public string TopicName { get; } = "Default Topic";
         public string Content { get; } = "Default Description";
+        public int MovieId { get; set; }
 
-        public CreateFeedCommand(Guid forumid,string author, string topicName, string content)
+        public CreateFeedCommand(Guid forumid,string author, string topicName, string content, int movieId)
         {
             ForumId = forumid;
             Author = author;
             TopicName = topicName;
             Content = content;
+            MovieId = movieId;
         }
     }
 }

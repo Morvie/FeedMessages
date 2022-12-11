@@ -2,7 +2,6 @@
 using FeedMessages.Application.Commands.CreateFeed;
 using FeedMessages.Application.Commands.DeleteFeed;
 using FeedMessages.Application.Commands.UpdateFeed;
-using FeedMessages.Application.Notifications;
 using FeedMessages.Application.Queries.GetAllFeeds;
 using FeedMessages.Application.Queries.GetFeed;
 using FeedMessages.Domain.Entities;
@@ -28,13 +27,30 @@ namespace FeedMessages.API.Controllers
             var query = new GetAllFeedsQuery();
             var result = await _mediator.Send(query);
             List<FeedViewModel> feeds = new();
-            if (result.Count().Equals(0)) return NoContent();
+            if (!result.Any()) return NoContent();
        
             foreach (var thread in result)
             {
-                feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited));
+                feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited, thread.MovieId));
             }
 
+            return Ok(feeds);
+        }
+
+        [HttpGet("/movie/{id}")]
+        public async Task<ActionResult> GetAll_ByMovieId(int id)
+        {
+            var query = new GetAllFeedsQuery();
+            var result = await _mediator.Send(query);
+            List<FeedViewModel> feeds = new();
+            if (!result.Any()) return NoContent();
+
+            foreach (var thread in result)
+            {
+                if(id.Equals(thread.Id)) feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited, thread.MovieId));
+                
+                if (!feeds.Any()) return NoContent();            
+            }
             return Ok(feeds);
         }
 
@@ -45,23 +61,17 @@ namespace FeedMessages.API.Controllers
             var feed = await _mediator.Send(query);
             if (feed == null) return NotFound();
             
-            var thread = new FeedViewModel(feed.Id, feed.TopicName, feed.Content, feed.Author, feed.CreatedAt, feed.LastEdited);
+            var thread = new FeedViewModel(feed.Id, feed.TopicName, feed.Content, feed.Author, feed.CreatedAt, feed.LastEdited, feed.MovieId);
             return Ok(thread);            
         }
 
         [HttpPost]
         public async Task<ActionResult> Create(CreateFeedViewModel createModel)
         {
-            var query = new CreateFeedCommand(createModel.ForumId, createModel.Author, createModel.TopicName, createModel.Content);
+            var query = new CreateFeedCommand(createModel.ForumId, createModel.Author, createModel.TopicName, createModel.Content, createModel.MovieId);
             var result = await _mediator.Send(query);
 
             if (result == null) return BadRequest();
-
-            await _mediator.Publish(new FeedCreateNotification()
-            {
-                Id = result.Id,
-                ForumId = Guid.Empty
-            });
 
             return Ok(result);
         }

@@ -21,7 +21,7 @@ namespace FeedMessages.Application.Commands.CreateFeed
 
         public Task<FeedDto> Handle(CreateFeedCommand request, CancellationToken cancellationToken)
         {
-            var thread = new FeedDto(Guid.NewGuid(), request.TopicName, request.Content, request.Author, DateTime.UtcNow, DateTime.UtcNow);
+            var thread = new FeedDto(Guid.NewGuid(), request.TopicName, request.Content, request.Author, DateTime.UtcNow, DateTime.UtcNow, request.MovieId);
             var result = _repository.Create(thread);
             return result;
         }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeedMessages.API.Migrations
 {
     [DbContext(typeof(FeedDbContext))]
-    [Migration("20221208142314_azure")]
-    partial class azure
+    [Migration("20221210213259_MovieIdAdded")]
+    partial class MovieIdAdded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,9 @@ namespace FeedMessages.API.Migrations
                     b.Property<DateTime>("LastEdited")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
                     b.Property<string>("TopicName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,29 +59,32 @@ namespace FeedMessages.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("feb3cae4-3879-40f7-baed-eb06a4708ae7"),
+                            Id = new Guid("3af84778-21e2-4c1c-8459-9be3040b3929"),
                             Author = "boringwhitecollar",
                             Content = "Let’s discuss one of my favorite movies of all time: CLUE. It is such a fun film. Based on a board game, six guests arrive at an isolated mansion for dinner, drinks, and MURDER. Starring: Tim Curry, Eileen Brennan, Madeline Kahn, Christopher Lloyd, Michael McKean, Martin Mull, Lesley Ann Warren, Lee Ving, Colleen Camp, and Howard Hesseman.",
-                            CreatedAt = new DateTime(2022, 12, 8, 15, 23, 13, 987, DateTimeKind.Local).AddTicks(5193),
-                            LastEdited = new DateTime(2022, 12, 8, 15, 23, 13, 987, DateTimeKind.Local).AddTicks(5229),
+                            CreatedAt = new DateTime(2022, 12, 10, 22, 32, 59, 773, DateTimeKind.Local).AddTicks(6259),
+                            LastEdited = new DateTime(2022, 12, 10, 22, 32, 59, 773, DateTimeKind.Local).AddTicks(6289),
+                            MovieId = 436270,
                             TopicName = "Clue (1985)"
                         },
                         new
                         {
-                            Id = new Guid("6b6c7dc5-b62c-4eed-a6d7-fe07945b9f31"),
+                            Id = new Guid("f0010174-4c05-46b5-a2d7-a4cc96ad2e27"),
                             Author = "BobbyCrispyGuitar",
                             Content = "The James Bond films are known for their original opening themes written by popular artists and are often played on the radio and tv. 'Live and Let Die' by Paul McCartney, 'For Your Eyes Only' by Sheena Easton, 'A View to a Kill' by Duran Duran, and 'Goldfinger' by Shirley Bassey are just a few. My personal favorite is 'Nobody Does It Better' by Carly Simon. What James Bond theme do you consider to be the best?",
-                            CreatedAt = new DateTime(2022, 12, 8, 15, 23, 13, 987, DateTimeKind.Local).AddTicks(5237),
-                            LastEdited = new DateTime(2022, 12, 8, 15, 23, 13, 987, DateTimeKind.Local).AddTicks(5239),
+                            CreatedAt = new DateTime(2022, 12, 10, 22, 32, 59, 773, DateTimeKind.Local).AddTicks(6298),
+                            LastEdited = new DateTime(2022, 12, 10, 22, 32, 59, 773, DateTimeKind.Local).AddTicks(6299),
+                            MovieId = 436270,
                             TopicName = "What is the greatest James Bond 007 theme song of all time?"
                         },
                         new
                         {
-                            Id = new Guid("6a2a747f-713b-4da6-acf8-3d972521fd83"),
+                            Id = new Guid("19f55001-18d4-4a8a-a402-4cf3b0867ecb"),
                             Author = "thorped077",
                             Content = "The below list are particular vigilante moves i absolutely love.Death Wish, Unbreakable,Death Sentence,Leon (the professional),Gran Torino,Drive,Kill Bill films(especially unbreakable, kill bill 2 , the professional)Can anyone give me any recommendations based on these vibes?Thanks, fellow movie aficionados.edited: Totally forgot about (Unforgiven 1992, which could top my entire list), Man on Fire , and Commando(1985- Pure nostalgia love and soundtrack as a kid in the 80s)r",
-                            CreatedAt = new DateTime(2022, 12, 8, 15, 23, 13, 987, DateTimeKind.Local).AddTicks(5242),
-                            LastEdited = new DateTime(2022, 12, 8, 15, 23, 13, 987, DateTimeKind.Local).AddTicks(5243),
+                            CreatedAt = new DateTime(2022, 12, 10, 22, 32, 59, 773, DateTimeKind.Local).AddTicks(6302),
+                            LastEdited = new DateTime(2022, 12, 10, 22, 32, 59, 773, DateTimeKind.Local).AddTicks(6304),
+                            MovieId = 436270,
                             TopicName = "Vigilante Movie Suggestions?"
                         });
                 });

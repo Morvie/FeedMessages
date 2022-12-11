@@ -37,6 +37,7 @@ namespace FeedMessages.Infrastructure.Repository
             existing.TopicName = entity.TopicName;
             existing.Content = entity.Content;
             existing.LastEdited = entity.LastEdited;
+            existing.MovieId = entity.MovieId;
             await _dbContext.SaveChangesAsync();
             return existing;
         }
