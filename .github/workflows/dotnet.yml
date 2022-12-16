@@ -79,34 +79,17 @@ jobs:
           fail_ci_if_error: true
           verbose: true
   
-  dockerlint:
-    runs-on: ubuntu-latest    
+  linter:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 
-      - uses: hadolint/hadolint-action@v2.1.0
+      - uses: actions/checkout@v2
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@master
         with:
-          dockerfile: ./Dockerfile
-      - name: Update Pull Request
-        uses: actions/github-script@v6
-        if: github.event_name == 'pull_request'
-        with:
-          script: |
-            const output = `
-            #### Hadolint: \`${{ steps.hadolint.outcome }}\`
-            \`\`\`
-            ${process.env.HADOLINT_RESULTS}
-            \`\`\`
-            `;
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
+          dockerfile: "./Dockerfile"
 
   deploy:
-    needs: [build, test, dockerlint]
+    needs: [build, test, linter]
     runs-on: ubuntu-latest    
     steps:
       - name: Checkout
