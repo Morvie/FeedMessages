@@ -79,7 +79,7 @@ jobs:
           fail_ci_if_error: true
           verbose: true
           
-  docker-lint:
+  dockerlinter:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2 
@@ -110,7 +110,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: [build, test, docker-lint]
+    needs: [build, test, dockerlinter]
     runs-on: ubuntu-latest    
     steps:
       - name: Checkout
