@@ -1,9 +1,10 @@
 name: Docker linter
 
 on:   
+  push: []
   pull_request:
     branches: [ "main" ]
-    
+
  linter:
     runs-on: ubuntu-latest
     steps: 
