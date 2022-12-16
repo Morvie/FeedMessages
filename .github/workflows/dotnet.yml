@@ -78,20 +78,39 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
           verbose: true
+          
   docker-lint:
     runs-on: ubuntu-latest
-    steps: 
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: lint
-      uses: luke142367/Docker-Lint-Action@v1.0.0
+    steps:
+    - uses: actions/checkout@v2 
+    - uses: hadolint/hadolint-action@v2.1.0
+    with:
+      dockerfile: ./Dockerfile
+    
+    - name: Update Pull Request
+      uses: actions/github-script@v6
+      if: github.event_name == 'pull_request'
       with:
-        target: ./Dockerfile
+        script: |
+          const output = `
+          #### Hadolint: \`${{ steps.hadolint.outcome }}\`
+          \`\`\`
+          ${process.env.HADOLINT_RESULTS}
+          \`\`\`
+          `;
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: output
+          })
+          
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: [build, test]
+    needs: [build, test, docker-lint]
     runs-on: ubuntu-latest    
     steps:
       - name: Checkout
