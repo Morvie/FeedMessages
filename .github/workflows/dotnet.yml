@@ -80,7 +80,6 @@ jobs:
           verbose: true
   
   dockerlint:
-    needs: [build, test, dockerlint]
     runs-on: ubuntu-latest    
     steps:
       - name: DockerLinter
