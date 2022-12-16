@@ -86,7 +86,7 @@ jobs:
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@master
         with:
-          dockerfile: "./Dockerfile"
+          dockerfile: "Dockerfile"
       - name: Update Pull Request
         uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
