@@ -78,21 +78,9 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
           verbose: true
-  
-  linter:
-    runs-on: ubuntu-latest
-    steps: 
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: lint
-      uses: luke142367/Docker-Lint-Action@v1.0.0
-      with:
-        target: ./Dockerfile
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: [build, test, linter]
+    needs: [build, test]
     runs-on: ubuntu-latest    
     steps:
       - name: Checkout
