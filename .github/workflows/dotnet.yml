@@ -78,8 +78,9 @@ jobs:
           name: codecov-umbrella
           fail_ci_if_error: true
           verbose: true
-
-  dockerlinter:
+  
+          
+  dockerlint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2 
@@ -110,7 +111,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: [build, test, dockerlinter]
+    needs: [build, test, dockerlint]
     runs-on: ubuntu-latest    
     steps:
       - name: Checkout
