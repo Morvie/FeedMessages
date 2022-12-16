@@ -3,7 +3,7 @@ name: Check Dockerfile with Docker linter
 on:   
 
   pull_request:
-    branches: [ "main" ]
+    branches: []
 
 jobs:
   linter:
