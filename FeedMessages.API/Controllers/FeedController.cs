@@ -37,8 +37,9 @@ namespace FeedMessages.API.Controllers
             return Ok(feeds);
         }
 
-        [HttpGet("/movie/{id}")]
-        public async Task<ActionResult> GetAll_ByMovieId(int id)
+        [HttpGet]
+        [Route("/api/feed/movie/{id}")]
+        public async Task<ActionResult>GetAll_ByMovieId(int id)
         {
             var query = new GetAllFeedsQuery();
             var result = await _mediator.Send(query);
