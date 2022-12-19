@@ -19,7 +19,7 @@ spec:
           image: markgoertz/feedmessages:latest
           imagePullPolicy: Always
           ports:
-          - containerPort: 80
+          - containerPort: 443
           resources:
             requests:
               cpu: 100m
@@ -37,7 +37,7 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 80
+      port: 443
       targetPort: 80
   selector:
     app: feeds-api
@@ -62,4 +62,4 @@ spec:
           service:
             name: feeds-api-service
             port:
-              number: 80
+              number: 443
