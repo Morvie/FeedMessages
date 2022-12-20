@@ -19,4 +19,3 @@ checks:
   - "no-read-only-root-fs"
   - "latest-tag"
   - "required-annotation-team"
-  
