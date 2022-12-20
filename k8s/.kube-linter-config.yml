@@ -18,5 +18,4 @@ checks:
   - "run-as-non-root"
   - "no-read-only-root-fs"
   - "latest-tag"
-  - "required-annotation-team"
   
