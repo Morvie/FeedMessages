@@ -34,7 +34,7 @@ jobs:
     deploy:
         environment: 
             name: production
-            url: https://20.31.18.76/feeds-service/api/feed/
+            url: https://20.31.18.76/
         permissions:
             actions: read
             contents: read
