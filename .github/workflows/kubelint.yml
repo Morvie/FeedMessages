@@ -23,7 +23,7 @@ jobs:
         id: kube-linter-action-scan
         with:
           # Adjust this directory to the location where your kubernetes resources and helm charts are located.
-          directory: k8s
+          directory: k8s/deploy.yml
           # Adjust this to the location of kube-linter config you're using, or remove the setting if you'd like to use
           # the default config.
           config: k8s/.kube-linter-config.yml
