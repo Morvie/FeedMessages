@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-  environment: build-environment
     runs-on: ubuntu-latest
     defaults:
       run:
