@@ -31,7 +31,7 @@ builder.Services.AddScoped<IQueryFeedInfrastructure, QueryFeedRepository>();
 builder.Services.AddScoped<ICommandFeedInfrastructure, CommandFeedRepository>();
 
 ConfigurationManager configuration = builder.Configuration;
-builder.Services.AddDbContext<FeedDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AzureConnection"),
+builder.Services.AddDbContext<FeedDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
     b => b.MigrationsAssembly("FeedMessages.API").EnableRetryOnFailure()));
 
 var app = builder.Build();
