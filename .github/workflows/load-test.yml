@@ -9,5 +9,7 @@ jobs:
     name: K6 Load Test
     runs-on: self-hosted
     steps:
-      - name: Setup environment
-        run: ./scripts/commands/run_load_test.ps1
+      - name: Perform load tests 
+        shell: pwsh
+        run: |
+          ./scripts/commands/run_load_test.ps1
