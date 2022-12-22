@@ -9,6 +9,9 @@ jobs:
     name: K6 Load Test
     runs-on: self-hosted
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        
       - name: Perform load tests 
         shell: powershell
         run: ./scripts/commands/run_load_test.ps1
