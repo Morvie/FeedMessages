@@ -10,6 +10,4 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Perform load tests 
-        shell: pwsh
-        run: |
-          ./scripts/commands/run_load_test.ps1
+        run: ./scripts/commands/run_load_test.ps1
