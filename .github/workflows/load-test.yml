@@ -6,6 +6,8 @@ on:
 
 jobs:
   run-K6-load-tests:
+    name: locade 
+    steps: ls
     name: K6 Load Test
     runs-on: self-hosted
     steps:
