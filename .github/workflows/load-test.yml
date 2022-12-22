@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: Perform load tests 
         shell: powershell
-        run: scripts\commands\run_load_test
+        run: ./scripts/commands/run_load_test.ps1
