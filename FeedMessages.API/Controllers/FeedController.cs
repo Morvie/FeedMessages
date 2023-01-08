@@ -44,14 +44,14 @@ namespace FeedMessages.API.Controllers
             var query = new GetAllFeedsQuery();
             var result = await _mediator.Send(query);
             List<FeedViewModel> feeds = new();
-            if (!result.Any()) return NoContent();
+            if (result == null) return BadRequest();
 
             foreach (var thread in result)
             {
-                if(id.Equals(thread.MovieId)) feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited, thread.MovieId));
-                
-                if (!feeds.Any()) return NoContent();            
+                if(id == (thread.MovieId)) feeds.Add(new FeedViewModel(thread.Id, thread.TopicName, thread.Content, thread.Author, thread.CreatedAt, thread.LastEdited, thread.MovieId));         
             }
+            if (feeds.Count().Equals(0)) return NoContent();
+            
             return Ok(feeds);
         }
 

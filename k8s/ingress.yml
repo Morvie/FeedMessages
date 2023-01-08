@@ -19,3 +19,11 @@ spec:
             name: feeds-api-service
             port:
               number: 443
+              
+      - path: /movie-service(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: movie-api-service
+            port:
+              number: 443
