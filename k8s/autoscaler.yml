@@ -8,8 +8,8 @@ spec:
     kind: Deployment
     name: feeds-api
   minReplicas: 1
-  maxReplicas: 4
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 75
 status:
   currentCPUUtilizationPercentage: 0
   currentReplicas: 1
